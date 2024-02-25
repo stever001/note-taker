@@ -1,15 +1,16 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const { v4: uuidv4 } = require('uuid');
 
-// Middleware setup...
+// Middleware setup
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-// Import routes
-const apiRoutes = require('./routes/apiRoutes');
-const htmlRoutes = require('./routes/htmlRoutes');
+// Import routes with corrected paths
+const apiRoutes = require('./db/routes/apiRoutes');
+const htmlRoutes = require('./db/routes/htmlRoutes');
 
 // Use routes
 app.use('/api', apiRoutes);
